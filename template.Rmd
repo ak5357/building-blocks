@@ -1,0 +1,108 @@
+---
+title: "Simple document"
+author: Arghya Kannadaguli
+date: 2024-09-10
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r echo = FALSE, message = FALSE}
+library(tidyverse)
+```
+
+I loaded necessary packages (e.g. `tidyverse`).
+
+I'm an R Markdown document! 
+
+# Section 1
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r echo = FALSE}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r mean(samp)`.
+
+# Section 3: Learning Assessment
+
+This is code for the learning assessment at P9105. It creates a dataframe `df` and then plots a histogram.
+
+```{r message = FALSE}
+
+df = tibble(
+  vec_numeric = rnorm(500, mean = 1),
+  vec_logical = (vec_numeric > 0),
+  vec_abs = abs(vec_numeric)
+)
+
+plot_df = tibble(
+  x = df$vec_abs
+)
+
+ggplot(plot_df, aes(x = x)) + geom_histogram()
+
+```
+
+
+The median value of this distribution is `r round(median(df$vec_numeric), digits = 2)`.
+
+
+
+# Section 4: Rmd Formatting
+
+Text formatting 
+------------------------------------------------------------
+
+*italic*  or  _italic_
+**bold**  or  __bold__
+`code`
+superscript^2^ and subscript~2~
+
+
+Headings
+------------------------------------------------------------
+
+# 1st Level Header
+
+## 2nd Level Header
+
+### 3rd Level Header
+
+
+Lists
+------------------------------------------------------------
+
+*   Bulleted list item 1
+
+*   Item 2
+
+    * Item 2a
+
+    * Item 2b
+
+1.  Numbered list item 1
+
+1.  Item 2. The numbers are incremented automatically in the output.
+
+
+Tables 
+------------------------------------------------------------
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
+
+
+
+
+
